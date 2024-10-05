@@ -1,0 +1,168 @@
+html{
+    -webkit-text-size-adjust: 100%;
+    font-feature-settings: normal;
+    -webkit-tap-highlight-color: transparent;
+    font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+    font-variation-settings: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-size: 16px;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff;
+    // overflow: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: #08F;
+}
+.app{
+    height: 100vh;
+}
+
+input,button{
+    font: inherit;
+}
+.chat-container {
+    height: 100vh;
+    max-width: 600px;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    text-align: center;
+    h1{
+        margin: 0;
+        padding: 20px 0;
+        color: #7D7D7D;
+        font-size:18px;
+        font-weight: 600;
+    }
+}
+#chat-window {
+    flex: 1 1 0%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    height: calc( 100% - 81px );
+
+}
+
+.messages-box{
+    height: 100%;
+    overflow: hidden;
+    flex: 1 1 0%;
+}
+.messages-list{
+    flex: 1 1 0%;
+    height: 100%;
+
+    overflow-y: scroll;
+    // 限制滚动到外面
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+
+    position: relative;
+}
+#messages {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 10px 20px;
+    line-height: 24px;
+    border-radius: 22px;
+}
+
+.user-message {
+    background-color: #f4f4f4;
+    align-self: flex-end;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.input-box{
+
+    padding: 10px 10px 5px 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 99px;
+    background: #F4F4F4;
+    margin: 0;
+    outline: none;
+    &:placeholder{
+        color:#D7D7D7;
+    }
+}
+
+
+
+#send-button {
+    padding: 6px 15px;
+    border: none;
+    color: #fff;
+    background-color: #D7D7D7;
+    border-radius: 999px;
+    cursor: pointer;
+
+    position: absolute;
+    right: 0;
+    margin: 8px 12px;
+
+    transition: background 0.3s, color 0.3s;
+
+}
+
+#send-button:hover {
+    background: #000;
+}
+
+
+
+#input-area {
+    display: flex;
+    background-color: #fff;
+    position: relative;
+    &[data-have-value="true"]{
+        #send-button{
+            background: #000;
+        }
+    }
+}
+
+footer{
+    font-size: 12px;
+    line-height: 14px;
+    padding: 6px 0;
+    color: #999;
+    text-align: center;
+    span{
+        a{
+            color: #4fadff;
+        }
+    }
+    .hr{
+        &::after{
+            content: "·";
+            margin: 0 2px;
+        }
+    }
+}
