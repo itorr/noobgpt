@@ -144,6 +144,9 @@ const scrollToBottom = () => {
 	htmlEl.scrollTop = htmlEl.scrollHeight;
 };
 
+
+const watingEl = document.querySelector('.waiting');
+
 inputAreaEl.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	
@@ -165,6 +168,8 @@ inputAreaEl.addEventListener("submit", async (e) => {
 
 	onInput();
 
+	watingEl.setAttribute('data-hide','false');
+
 	// 模拟网络延迟
 	await simulateNetworkRequest( userInput.length );
 	const botMessage = getBotResponse(userInput);
@@ -182,6 +187,8 @@ inputAreaEl.addEventListener("submit", async (e) => {
 
 	userInputEl.disabled = false;
 	userInputEl.focus();
+
+	watingEl.setAttribute('data-hide','true');
 
 	new Image().src = `https://lab.magiconch.com/api/noobgpt/log?uuid=${uuid}&t=${encodeURIComponent(userInput)}&r=${encodeURIComponent(botMessage)}`;
 });

@@ -67,11 +67,11 @@ header{
 .messages-list{
     flex: 1 1 0%;
     height: 100%;
+    padding: 80px 20px 100px;
 
     position: relative;
 }
 #messages {
-    padding: 80px 20px 100px;
     display: flex;
     flex-direction: column;
 }
@@ -167,5 +167,20 @@ footer{
             content: "·";
             margin: 0 2px;
         }
+    }
+}
+
+
+.waiting{
+    display: block;
+    margin: 5px 0;
+    padding: 10px 20px;
+    color: #D7D7D7;
+
+    &:before{
+        content: "Wating...";
+    }
+    &[data-hide="true"]{
+        display: none;
     }
 }
