@@ -66,11 +66,11 @@ const uuid = window.localStorage ? localStorage.getItem('uuid') || (()=>{
 })() : '0';
 
 // 模拟延迟
-function simulateNetworkRequest(text) {
+function simulateNetworkRequest(ms) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
-			resolve(text);
-		}, Math.random() * 1000 + 200); //随机延迟500到1500ms
+			resolve();
+		}, Math.random() * 1000 + ms); //随机延迟500到1500ms
 	});
 }
 
@@ -166,7 +166,7 @@ inputAreaEl.addEventListener("submit", async (e) => {
 	onInput();
 
 	// 模拟网络延迟
-	await simulateNetworkRequest();
+	await simulateNetworkRequest( userInput.length );
 	const botMessage = getBotResponse(userInput);
 
 	lastUserMessages.push(botMessage);
