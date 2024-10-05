@@ -70,7 +70,7 @@ function simulateNetworkRequest(ms) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, Math.random() * 1000 + ms); //随机延迟500到1500ms
+		}, Math.random() * 1000 + 300 + ms); //随机延迟500到1500ms
 	});
 }
 
@@ -166,7 +166,7 @@ inputAreaEl.addEventListener("submit", async (e) => {
 	onInput();
 
 	// 模拟网络延迟
-	await simulateNetworkRequest( userInput.length );
+	await simulateNetworkRequest( userInput.length * 20 );
 	const botMessage = getBotResponse(userInput);
 
 	lastUserMessages.push(botMessage);
