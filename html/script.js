@@ -54,11 +54,11 @@ const responses = {
 	],
 };
 
-const uuid = localStorage.getItem('uuid') || (()=>{
+const uuid = window.localStorage ? localStorage.getItem('uuid') || (()=>{
 	const v = Math.random().toString(36).slice(2);
 	localStorage.setItem('uuid',v);
 	return v;
-})();
+})() : '0';
 
 // 模拟延迟
 function simulateNetworkRequest(text) {
