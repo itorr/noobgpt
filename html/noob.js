@@ -1,12 +1,12 @@
 const responses = {
-    典: [
+	典: [
 		'赢',
 		'孝',
 		'不用',
 		'觉得',
 		'认为',
 	],
-    孝: [
+	孝: [
 		'典',
 		'支持',
 		'不错',
@@ -16,7 +16,7 @@ const responses = {
 		'妈',
 		'谢',
 	],
-    急: [
+	急: [
 		'孝',
 		'??',
 		'？？',
@@ -28,7 +28,7 @@ const responses = {
 		'蚌',
 		'妈',
 	],
-    乐: [
+	乐: [
 		'孝',
 		'典',
 		'急',
@@ -39,17 +39,17 @@ const responses = {
 		'是吧',
 		'没完',
 	],
-    蚌: [
+	蚌: [
 		'急',
 		'赢',
 		'妈',
 		'停',
 		'别说',
 	],
-    赢: [
+	赢: [
 		'蚌',
 	],
-    麻: [
+	麻: [
 		'典',
 	],
 	确实: [
@@ -66,19 +66,19 @@ const uuid = window.localStorage ? localStorage.getItem('uuid') || (()=>{
 
 // 模拟延迟
 function simulateNetworkRequest(text) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(text);
-        }, Math.random() * 1000 + 200); //随机延迟500到1500ms
-    });
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(text);
+		}, Math.random() * 1000 + 200); //随机延迟500到1500ms
+	});
 }
 
 let lastUserMessages = [];
 
 function getBotResponse(userMessage) {
-    let keywords = [];
+	let keywords = [];
 
-    // 在用户消息中匹配关键词
+	// 在用户消息中匹配关键词
 	for(const key in responses) {
 		const values = responses[key];
 		for(const value of values) {
@@ -128,9 +128,9 @@ function getBotResponse(userMessage) {
 
 
 
-    // 随机选择一个回应, 如果没有匹配到关键词,返回默认值
-    let response = keywords[Math.floor(Math.random() * keywords.length)];
-    return response;
+	// 随机选择一个回应, 如果没有匹配到关键词,返回默认值
+	let response = keywords[Math.floor(Math.random() * keywords.length)];
+	return response;
 }
 
 const userInputEl = document.getElementById("user-input");
@@ -146,38 +146,38 @@ const scrollToBottom = () => {
 inputAreaEl.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	
-    const userInput = userInputEl.value.trim();
-    if (userInput === '') return;
+	const userInput = userInputEl.value.trim();
+	if (userInput === '') return;
 
 	userInputEl.disabled = true;
 
-    // 用户信息显示
-    const userMessageElement = document.createElement("div");
-    userMessageElement.className = "message user-message";
-    userMessageElement.textContent = userInput;
+	// 用户信息显示
+	const userMessageElement = document.createElement("div");
+	userMessageElement.className = "message user-message";
+	userMessageElement.textContent = userInput;
 	messagesEl.appendChild(userMessageElement);
 
-    scrollToBottom();
+	scrollToBottom();
 
-    // 清空输入框
-    userInputEl.value = '';
+	// 清空输入框
+	userInputEl.value = '';
 
 	onInput();
 
-    // 模拟网络延迟
+	// 模拟网络延迟
 	await simulateNetworkRequest();
-    const botMessage = getBotResponse(userInput);
+	const botMessage = getBotResponse(userInput);
 
 	lastUserMessages.push(botMessage);
 
-    // Bot信息显示
-    const botMessageElement = document.createElement("div");
-    botMessageElement.className = "message bot-message";
-    botMessageElement.textContent = botMessage;
+	// Bot信息显示
+	const botMessageElement = document.createElement("div");
+	botMessageElement.className = "message bot-message";
+	botMessageElement.textContent = botMessage;
 	messagesEl.appendChild(botMessageElement);
 
-    // 滚动至底部
-    scrollToBottom();
+	// 滚动至底部
+	scrollToBottom();
 
 	userInputEl.disabled = false;
 	userInputEl.focus();
@@ -193,3 +193,12 @@ const onInput = ()=>{
 }
 
 userInputEl.addEventListener('input',onInput);
+
+
+
+
+// 访问统计
+const el = document.createElement('script');
+el.setAttribute('data-cf-beacon','{"token": "203ba33cb58c43f0a0e06479f52e4c1b"}');
+el.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+document.body.appendChild(el);
