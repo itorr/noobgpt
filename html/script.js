@@ -54,6 +54,12 @@ const responses = {
 	],
 };
 
+const uuid = localStorage.getItem('uuid') || (()=>{
+	const v = Math.random().toString(36).slice(2);
+	localStorage.setItem('uuid',v);
+	return v;
+})();
+
 // 模拟延迟
 function simulateNetworkRequest(text) {
     return new Promise((resolve) => {
@@ -171,6 +177,8 @@ inputAreaEl.addEventListener("submit", async (e) => {
 
 	userInputEl.disabled = false;
 	userInputEl.focus();
+
+	new Image().src = `https://lab.magiconch.com/api/noobgpt/log?uuid=${uuid}&t=${encodeURIComponent(userInput)}&r=${encodeURIComponent(botMessage)}`;
 });
 
 
