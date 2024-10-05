@@ -7,6 +7,10 @@ html{
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+
 }
 
 body {
@@ -64,11 +68,6 @@ header{
     flex: 1 1 0%;
     height: 100%;
 
-    overflow-y: scroll;
-    // 限制滚动到外面
-    overscroll-behavior: contain;
-    scroll-behavior: smooth;
-
     position: relative;
 }
 #messages {
@@ -119,6 +118,7 @@ header{
 
 
 #send-button {
+    line-height: 22px;
     padding: 6px 15px;
     border: none;
     color: #fff;
