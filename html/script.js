@@ -52,6 +52,10 @@ const responses = {
     麻: [
 		'典',
 	],
+	确实: [
+		'图灵',
+		'离谱',
+	]
 };
 
 const uuid = window.localStorage ? localStorage.getItem('uuid') || (()=>{
