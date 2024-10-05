@@ -22,23 +22,23 @@ a{
     color: #08F;
 }
 .app{
-    height: 100vh;
+    
 }
 
 input,button{
     font: inherit;
 }
-.chat-container {
-    height: 100vh;
+.layout{
     max-width: 600px;
-    border-radius: 5px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
 }
 
 header{
     text-align: center;
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
     h1{
         margin: 0;
         padding: 20px 0;
@@ -47,20 +47,18 @@ header{
         font-weight: 600;
     }
 }
+
+
+
+.chat-container {
+
+}
 #chat-window {
-    flex: 1 1 0%;
     position: relative;
-    display: flex;
-    flex-direction: column;
-
-    height: calc( 100% - 81px );
-
 }
 
 .messages-box{
-    height: 100%;
     overflow: hidden;
-    flex: 1 1 0%;
 }
 .messages-list{
     flex: 1 1 0%;
@@ -74,7 +72,7 @@ header{
     position: relative;
 }
 #messages {
-    padding: 20px;
+    padding: 80px 20px 100px;
     display: flex;
     flex-direction: column;
 }
@@ -98,6 +96,11 @@ header{
 .input-box{
 
     padding: 10px 10px 5px 10px;
+
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 #user-input {

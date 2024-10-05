@@ -125,7 +125,14 @@ function getBotResponse(userMessage) {
 
 const userInputEl = document.getElementById("user-input");
 const messagesListEl = document.querySelector(".messages-list");
+const htmlEl = document.documentElement;
 const inputAreaEl = document.getElementById("input-area");
+
+const messagesEl = document.getElementById("messages");
+const scrollToBottom = () => {
+	htmlEl.scrollTop = htmlEl.scrollHeight;
+};
+
 inputAreaEl.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	
@@ -138,7 +145,9 @@ inputAreaEl.addEventListener("submit", async (e) => {
     const userMessageElement = document.createElement("div");
     userMessageElement.className = "message user-message";
     userMessageElement.textContent = userInput;
-    document.getElementById("messages").appendChild(userMessageElement);
+	messagesEl.appendChild(userMessageElement);
+
+    scrollToBottom();
 
     // 清空输入框
     userInputEl.value = '';
@@ -155,10 +164,10 @@ inputAreaEl.addEventListener("submit", async (e) => {
     const botMessageElement = document.createElement("div");
     botMessageElement.className = "message bot-message";
     botMessageElement.textContent = botMessage;
-    document.getElementById("messages").appendChild(botMessageElement);
+	messagesEl.appendChild(botMessageElement);
 
     // 滚动至底部
-    messagesListEl.scrollTop = messagesListEl.scrollHeight;
+    scrollToBottom();
 
 	userInputEl.disabled = false;
 	userInputEl.focus();
